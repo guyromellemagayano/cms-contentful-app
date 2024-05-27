@@ -1,5 +1,5 @@
+import ContentfulImage from "@/components/images/contentful/ContentfulImage";
 import { PictureAuthorData } from "@/components/layouts/more-stories";
-import ContentfulImage from "@/lib/contentful-image";
 
 export type AvatarProps = {
   name: string;

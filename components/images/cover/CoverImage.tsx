@@ -1,7 +1,7 @@
 import Link from "next/link";
 
+import { ContentfulImage } from "@/components/images/contentful";
 import { cn } from "@/helpers/styles";
-import ContentfulImage from "@/lib/contentful-image";
 
 export type CoverImageProps = {
   title: string;
