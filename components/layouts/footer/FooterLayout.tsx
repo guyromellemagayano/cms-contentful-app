@@ -1,4 +1,4 @@
-import { EXAMPLE_PATH } from "@/lib/constants";
+import { EXAMPLE_PATH } from "@/configs/env";
 
 /**
  * Renders the footer layout component.

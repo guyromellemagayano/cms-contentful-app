@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import { Inter } from "next/font/google";
 
 import { FooterLayout } from "@/components/layouts/footer";
-import { CMS_NAME } from "@/lib/constants";
+import { CMS_NAME } from "@/configs/env";
 
 import "./globals.css";
 
