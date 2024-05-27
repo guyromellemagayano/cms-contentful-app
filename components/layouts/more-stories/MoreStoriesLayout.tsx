@@ -25,7 +25,7 @@ import {
  * @param author - The author data.
  * @param slug - The slug of the story.
  *
- * @returns {JSX.Element} The rendered layout component.
+ * @returns The rendered layout component.
  */
 export const MoreStoriesLayout = <
   CID extends CoverImageData,
