@@ -36,6 +36,7 @@ const config = {
     CONTENTFUL_PREVIEW_ACCESS_TOKEN:
       process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN,
     CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
+    CONTENTFUL_MANAGEMENT_TOKEN: process.env.CONTENTFUL_MANAGEMENT_TOKEN,
   },
   headers: async () => [
     {
