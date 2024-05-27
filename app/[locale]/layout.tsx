@@ -1,7 +1,9 @@
-import { FooterLayout } from "@/components/layouts/footer";
-import { CMS_NAME } from "@/lib/constants";
+import { ReactNode } from "react";
 
 import { Inter } from "next/font/google";
+
+import { FooterLayout } from "@/components/layouts/footer";
+import { CMS_NAME } from "@/lib/constants";
 
 import "./globals.css";
 
@@ -16,11 +18,18 @@ const inter = Inter({
   display: "swap",
 });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export type RootLayoutProps = {
+  children: ReactNode;
+};
+
+/**
+ * Render the root layout for the application.
+ *
+ * @param children - The children to render in the layout.
+ *
+ * @returns The rendered RootLayout component.
+ */
+const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang="en" className={inter.variable}>
       <body>
@@ -31,4 +40,8 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
+};
+
+RootLayout.displayName = "RootLayout";
+
+export default RootLayout;

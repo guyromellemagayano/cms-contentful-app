@@ -5,7 +5,12 @@ import { MoreStoriesLayout } from "@/components/layouts/more-stories";
 import { HeroPost } from "@/components/posts/hero";
 import { getAllPosts } from "@/lib/api";
 
-export default async function Page() {
+/**
+ * Renders a page component.
+ *
+ * @returns A promise that resolves to a JSX element representing the page.
+ */
+const Page = async (): Promise<JSX.Element> => {
   const { isEnabled } = draftMode(),
     allPosts = await getAllPosts(isEnabled),
     heroPost = allPosts?.[0] || undefined,
@@ -29,4 +34,8 @@ export default async function Page() {
       <MoreStoriesLayout morePosts={morePosts} />
     </div>
   );
-}
+};
+
+Page.displayName = "HomePage";
+
+export default Page;
