@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { Avatar } from "@/components/avatar";
 import { DateComponent } from "@/components/date";
-import { CoverImage } from "@/components/image/cover";
+import { CoverImage } from "@/components/images/cover";
 
 import {
   type AuthorData,
