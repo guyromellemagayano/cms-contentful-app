@@ -1,9 +1,9 @@
-import Link from "next/link";
 import { draftMode } from "next/headers";
+import Link from "next/link";
 
-import Date from "./date";
-import CoverImage from "./cover-image";
 import Avatar from "./avatar";
+import CoverImage from "./cover-image";
+import Date from "./date";
 import MoreStories from "./more-stories";
 
 import { getAllPosts } from "@/lib/api";
@@ -79,8 +79,8 @@ function HeroPost({
 export default async function Page() {
   const { isEnabled } = draftMode();
   const allPosts = await getAllPosts(isEnabled);
-  const heroPost = allPosts[0];
-  const morePosts = allPosts.slice(1);
+  const heroPost = allPosts?.[0] || undefined;
+  const morePosts = allPosts?.slice(1) || undefined;
 
   return (
     <div className="container mx-auto px-5">

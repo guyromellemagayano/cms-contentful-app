@@ -1,5 +1,5 @@
-import ContentfulImage from "../lib/contentful-image";
 import Link from "next/link";
+import ContentfulImage from "../../lib/contentful-image";
 
 function cn(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
