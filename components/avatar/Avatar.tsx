@@ -10,7 +10,7 @@ import { type AvatarProps } from "./types";
  *
  * @returns The rendered Avatar component.
  */
-export const Avatar = ({ name, picture }: AvatarProps): JSX.Element => {
+const Avatar = ({ name, picture }: AvatarProps): JSX.Element => {
   return (
     <div className="flex items-center">
       <div className="mr-4 w-12 h-12">
@@ -28,3 +28,5 @@ export const Avatar = ({ name, picture }: AvatarProps): JSX.Element => {
 };
 
 Avatar.displayName = "Avatar";
+
+export default Avatar;
