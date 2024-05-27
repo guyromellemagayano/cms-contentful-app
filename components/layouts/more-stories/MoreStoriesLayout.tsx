@@ -4,14 +4,41 @@ import { Avatar } from "@/components/avatar";
 import { DateComponent } from "@/components/date";
 import { CoverImage } from "@/components/images/cover";
 
-import {
-  type AuthorData,
-  type CoverImageData,
-  type MorePostsData,
-  type MoreStoriesLayoutProps,
-  type PictureAuthorData,
-  type PostPreviewProps,
-} from "./types";
+export type PostPreviewProps<
+  CID extends CoverImageData,
+  AD extends AuthorData<PictureAuthorData>
+> = {
+  title: string;
+  coverImage: CID;
+  date: string;
+  excerpt: string;
+  author: AD;
+  slug: string;
+};
+
+export type CoverImageData = {
+  url: string;
+  [key: string]: any;
+};
+
+export type AuthorData<PAD extends PictureAuthorData> = {
+  name: string;
+  picture: PAD;
+  [key: string]: any;
+};
+
+export type PictureAuthorData = {
+  url: string;
+  [key: string]: any;
+};
+
+export type MoreStoriesLayoutProps<MPD extends MorePostsData> = {
+  morePosts: Array<MPD>;
+};
+
+export type MorePostsData = {
+  [key: string]: any;
+};
 
 /**
  * Renders the layout for displaying more stories.

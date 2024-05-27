@@ -3,7 +3,11 @@ import Link from "next/link";
 import { cn } from "@/helpers/styles";
 import ContentfulImage from "@/lib/contentful-image";
 
-import { CoverImageProps } from "./types";
+export type CoverImageProps = {
+  title: string;
+  url: string;
+  slug?: string;
+};
 
 /**
  * Renders a cover image component.

@@ -1,6 +1,8 @@
 import { format } from "date-fns";
 
-import { type DateComponentProps } from "./types";
+export type DateComponentProps = {
+  dateString: string;
+};
 
 /**
  * Renders a date component.

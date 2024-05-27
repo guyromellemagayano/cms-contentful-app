@@ -1,6 +1,10 @@
+import { PictureAuthorData } from "@/components/layouts/more-stories";
 import ContentfulImage from "@/lib/contentful-image";
 
-import { type AvatarProps } from "./types";
+export type AvatarProps = {
+  name: string;
+  picture: PictureAuthorData;
+};
 
 /**
  * Avatar component displays an avatar with a name.

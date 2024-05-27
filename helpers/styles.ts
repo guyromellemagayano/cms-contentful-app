@@ -1,4 +1,4 @@
-import { CnProps } from "./helpers";
+export type CnProps = Array<any>;
 
 /**
  * Combines multiple class names into a single string, filtering out any falsy values.
