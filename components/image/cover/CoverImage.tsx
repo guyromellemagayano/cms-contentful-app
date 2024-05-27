@@ -14,7 +14,7 @@ import { CoverImageProps } from "./types";
  *
  * @returns The rendered cover image component.
  */
-export const CoverImage = ({
+const CoverImage = ({
   title,
   url = "#",
   slug,
@@ -46,3 +46,5 @@ export const CoverImage = ({
 };
 
 CoverImage.displayName = "CoverImage";
+
+export default CoverImage;
