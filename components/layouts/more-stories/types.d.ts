@@ -1,4 +1,4 @@
-export type MoreStoriesProps<
+export type PostPreviewProps<
   CID extends CoverImageData,
   AD extends AuthorData<PictureAuthorData>
 > = {
@@ -23,5 +23,13 @@ export type AuthorData<PAD extends PictureAuthorData> = {
 
 export type PictureAuthorData = {
   url: string;
+  [key: string]: any;
+};
+
+export type MoreStoriesLayoutProps<MPD extends MorePostsData> = {
+  morePosts: Array<MPD>;
+};
+
+export type MorePostsData = {
   [key: string]: any;
 };

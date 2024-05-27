@@ -1,15 +1,16 @@
 import Link from "next/link";
 
-import DateComponent from "@/app/[locale]/date";
-
 import { Avatar } from "@/components/avatar";
+import { DateComponent } from "@/components/date";
 import { CoverImage } from "@/components/image/cover";
 
 import {
   type AuthorData,
   type CoverImageData,
-  type MoreStoriesProps,
+  type MorePostsData,
+  type MoreStoriesLayoutProps,
   type PictureAuthorData,
+  type PostPreviewProps,
 } from "./types";
 
 /**
@@ -27,7 +28,7 @@ import {
  *
  * @returns The rendered layout component.
  */
-export const MoreStoriesLayout = <
+export const PostPreview = <
   CID extends CoverImageData,
   AD extends AuthorData<PictureAuthorData>
 >({
@@ -37,7 +38,7 @@ export const MoreStoriesLayout = <
   excerpt,
   author,
   slug,
-}: MoreStoriesProps<CID, AD>): JSX.Element => {
+}: PostPreviewProps<CID, AD>): JSX.Element => {
   return (
     <div>
       <div className="mb-5">
@@ -66,4 +67,42 @@ export const MoreStoriesLayout = <
   );
 };
 
+PostPreview.displayName = "PostPreview";
+
+/**
+ * Renders a layout for displaying more stories.
+ *
+ * @template MPD - The type of data for more posts.
+ *
+ * @param morePosts - The data for more posts.
+ *
+ * @returns The rendered MoreStoriesLayout component.
+ */
+const MoreStoriesLayout = <MPD extends MorePostsData>({
+  morePosts,
+}: MoreStoriesLayoutProps<MPD>): JSX.Element => {
+  return (
+    <section>
+      <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
+        More Stories
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32">
+        {morePosts?.map((post) => (
+          <PostPreview
+            key={post.slug}
+            title={post.title}
+            coverImage={post.coverImage}
+            date={post.date}
+            author={post.author}
+            slug={post.slug}
+            excerpt={post.excerpt}
+          />
+        ))}
+      </div>
+    </section>
+  );
+};
+
 MoreStoriesLayout.displayName = "MoreStoriesLayout";
+
+export default MoreStoriesLayout;
