@@ -1,8 +1,6 @@
-import { ReactNode } from "react";
+import { WithChildren } from "@/types/common";
 
-type RootLayoutProps = {
-  children: ReactNode;
-};
+export type RootLayoutProps = WithChildren;
 
 /**
  * Since we have a `not-found.tsx` page on the root, a layout file
