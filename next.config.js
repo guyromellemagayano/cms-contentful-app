@@ -1,6 +1,6 @@
 // @ts-check
 const createNextIntlPlugin = require("next-intl/plugin");
-const withNextIntl = createNextIntlPlugin("./i18n.ts");
+const withNextIntl = createNextIntlPlugin();
 const withPWA = require("@ducanh2912/next-pwa").default({
   disable: process.env.NODE_ENV === "development",
   dest: "public",
@@ -20,9 +20,9 @@ const polyfills = (/** @type {{ entry: () => Promise<any>; }} */ config) => {
 
     if (
       entries["main.js"] &&
-      !entries["main.js"].includes("./configs/polyfills.ts")
+      !entries["main.js"].includes("./src/configs/polyfills.ts")
     ) {
-      entries["main.js"].unshift("./configs/polyfills.ts");
+      entries["main.js"].unshift("./src/configs/polyfills.ts");
     }
 
     return entries;
@@ -32,11 +32,17 @@ const polyfills = (/** @type {{ entry: () => Promise<any>; }} */ config) => {
 /** @type {import('next').NextConfig} */
 const config = {
   env: {
+    COIN_COLORFUL_EXAMPLE_PATH: process.env.COIN_COLORFUL_EXAMPLE_PATH,
+    COIN_COLORFUL_CMS_NAME: process.env.COIN_COLORFUL_CMS_NAME,
+    COIN_COLORFUL_CMS_URL: process.env.COIN_COLORFUL_CMS_URL,
+    COIN_COLORFUL_SITE_URL: process.env.COIN_COLORFUL_SITE_URL,
     CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN,
     CONTENTFUL_PREVIEW_ACCESS_TOKEN:
       process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN,
     CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
     CONTENTFUL_MANAGEMENT_TOKEN: process.env.CONTENTFUL_MANAGEMENT_TOKEN,
+    CONTENTFUL_PREVIEW_SECRET: process.env.CONTENTFUL_PREVIEW_SECRET,
+    CONTENTFUL_REVALIDATE_SECRET: process.env.CONTENTFUL_REVALIDATE_SECRET,
   },
   headers: async () => [
     {
@@ -127,4 +133,4 @@ const config = {
   },
 };
 
-module.exports = withPWA(withNextIntl(config));
+module.exports = withNextIntl(withPWA(config));
