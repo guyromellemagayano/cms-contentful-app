@@ -1,6 +1,7 @@
 import { getRequestConfig } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { locales } from "./configs/next-intl";
+
+import { locales } from "@/configs/next-intl";
 
 /**
  * Retrieves the request configuration for the specified locale.

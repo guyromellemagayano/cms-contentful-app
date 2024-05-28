@@ -7,8 +7,8 @@ import {
   getTranslations,
   unstable_setRequestLocale,
 } from "next-intl/server";
-import { Inter } from "next/font/google";
 
+import { ParamsData } from "@/app/types/page";
 import { FooterLayout } from "@/components/layouts/footer";
 import { locales } from "@/configs/next-intl";
 
@@ -22,28 +22,21 @@ import Providers from "./providers";
 export const generateStaticParams = (): { locale: string }[] =>
   locales.map((locale) => ({ locale }));
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
-
 export type LocaleLayoutProps<PD extends ParamsData> = {
   children: ReactNode;
   params: PD;
 };
 
-export type ParamsData = {
-  locale: string;
-  [key: string]: any;
-};
-
 export const generateMetadata = async ({
   params: { locale },
 }: {
-  params: { locale: string };
+  params: Pick<ParamsData, "locale">;
 }): Promise<Metadata> => {
-  const t = await getTranslations({ locale, namespace: "LocaleLayout" });
+  const localeCheck = locale && locale?.length > 0 ? locale : "en",
+    t = await getTranslations({
+      locale: localeCheck,
+      namespace: "LocaleLayout",
+    });
 
   return {
     title: t("title"),
@@ -59,12 +52,14 @@ const LocaleLayout = async <PD extends ParamsData>({
   children,
   params: { locale },
 }: LocaleLayoutProps<PD>) => {
-  unstable_setRequestLocale(locale);
+  const localeCheck = locale && locale?.length > 0 ? locale : "en";
+
+  unstable_setRequestLocale(localeCheck);
 
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={inter.variable}>
+    <html lang={locale}>
       <head>
         <meta charSet="utf-8" />
         <meta name="robots" content="noindex, nofollow" />

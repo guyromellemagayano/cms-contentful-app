@@ -22,9 +22,7 @@ const Page = async (): Promise<JSX.Element> => {
     <div className="container mx-auto px-5">
       <p>
         {t.rich("description", {
-          code: (chunks) => (
-            <code className="font-mono text-white">{chunks}</code>
-          ),
+          code: (chunks) => <code>{chunks}</code>,
         })}
       </p>
 

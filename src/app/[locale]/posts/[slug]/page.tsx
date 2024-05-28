@@ -1,6 +1,7 @@
 import { draftMode } from "next/headers";
 import Link from "next/link";
 
+import { ParamsData } from "@/app/types/page";
 import { Avatar } from "@/components/avatar";
 import { DateComponent } from "@/components/date";
 import { CoverImage } from "@/components/images/cover";
@@ -20,11 +21,6 @@ export type PostPageProps<P extends ParamsData> = {
   params: P;
 };
 
-export type ParamsData = {
-  slug: string;
-  [key: string]: any;
-};
-
 /**
  * Renders a page for a specific blog post.
  * @template P - The type of the params data.
@@ -32,13 +28,15 @@ export type ParamsData = {
  * @returns The JSX element representing the post page.
  */
 const PostPage = async <P extends ParamsData>({
-  params,
+  params: { slug },
 }: PostPageProps<P>): Promise<JSX.Element> => {
+  const slugCheck = slug && slug?.length > 0 ? slug : "en";
+
   // Function to check if draft mode is enabled
   const { isEnabled } = draftMode();
 
   // Fetch the post and related posts
-  const { post, morePosts } = await getPostAndMorePosts(params.slug, isEnabled);
+  const { post, morePosts } = await getPostAndMorePosts(slugCheck, isEnabled);
 
   // Render the post page
   return (
