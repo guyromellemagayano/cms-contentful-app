@@ -1,5 +1,3 @@
-import { ReactNode } from "react";
-
 import { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import {
@@ -8,9 +6,10 @@ import {
   unstable_setRequestLocale,
 } from "next-intl/server";
 
-import { ParamsData } from "@/app/types/page";
 import { FooterLayout } from "@/components/layouts/footer";
 import { locales } from "@/configs/next-intl";
+import { WithChildren } from "@/types/common";
+import { ParamsData } from "@/types/page";
 
 import Providers from "./providers";
 
@@ -22,8 +21,7 @@ import Providers from "./providers";
 export const generateStaticParams = (): { locale: string }[] =>
   locales.map((locale) => ({ locale }));
 
-export type LocaleLayoutProps<PD extends ParamsData> = {
-  children: ReactNode;
+export type LocaleLayoutProps<PD extends ParamsData> = WithChildren & {
   params: PD;
 };
 
