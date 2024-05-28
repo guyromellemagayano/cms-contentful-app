@@ -87,20 +87,21 @@ const config = {
     path: "/_next/image",
   },
   webpack(config, options) {
-    const fileLoaderRule = config.module.rules.find((rule) =>
-      rule.test?.test?.(".svg")
+    const fileLoaderRule = config.module.rules.find(
+      (rule) =>
+        rule.test?.test?.(".svg")
     );
 
     config.module.rules.push(
       {
         ...fileLoaderRule,
         test: /\.svg$/i,
-        resourceQuery: /url/, // *.svg?url
+        resourceQuery: /url/,
       },
       {
         test: /\.svg$/i,
         issuer: fileLoaderRule.issuer,
-        resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] }, // exclude if *.svg?url
+        resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] },
         use: ["@svgr/webpack"],
       }
     );
@@ -121,11 +122,6 @@ const config = {
         }
       );
     }
-
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ["@svgr/webpack"],
-    });
 
     polyfills(config);
 
