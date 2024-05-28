@@ -37,8 +37,8 @@ export type ContentfulContentProviderProps = WithChildren;
 const ContentfulContentProvider = ({
   children,
 }: ContentfulContentProviderProps) => {
-  const searchParams = useSearchParams(),
-    previewActive = !!searchParams.get("preview");
+  const searchParams = useSearchParams()
+  const previewActive = !!searchParams.get("preview");
 
   return (
     <ContentfulContext.Provider

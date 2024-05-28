@@ -21,24 +21,23 @@ export type ReactQueryProviderProps = WithChildren;
  * @returns The rendered `ReactQueryProvider` component.
  */
 const ReactQueryProvider = ({ children }: ReactQueryProviderProps) => {
-  const router = useRouter(),
-    queryConfig = {
-      queryCache: new QueryCache({
-        onError: () => {
-          router.push("/404");
-        },
-      }),
-
-      defaultOptions: {
-        queries: {
-          retry: false,
-          refetchOnMount: false,
-          refetchIntervalInBackground: false,
-          refetchOnWindowFocus: false,
-        },
+  const router = useRouter();
+  const queryConfig = {
+    queryCache: new QueryCache({
+      onError: () => {
+        router.push("/404");
       },
-    };
+    }),
 
+    defaultOptions: {
+      queries: {
+        retry: false,
+        refetchOnMount: false,
+        refetchIntervalInBackground: false,
+        refetchOnWindowFocus: false,
+      },
+    },
+  };
   const [queryClient] = useState(() => new QueryClient(queryConfig));
 
   return (
