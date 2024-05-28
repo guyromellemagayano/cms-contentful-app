@@ -1,10 +1,11 @@
 "use client";
 
-import { ReactNode, createContext } from "react";
+import { createContext } from "react";
 
 import { useSearchParams } from "next/navigation";
 
 import { CONTENTFUL_CONFIG } from "@/configs/contentful";
+import { WithChildren } from "@/types/common";
 
 export type ContentfulContextValueProps = {
   locale: string;
@@ -26,14 +27,12 @@ export const ContentfulContext = createContext<ContentfulContextValueProps>(
   contentfulContextValues
 );
 
-export type ContentfulContentProviderProps = {
-  children: ReactNode;
-};
+export type ContentfulContentProviderProps = WithChildren;
 
 /**
  * Provides the Contentful content to the application.
  * @param children - The child components to be wrapped by the ContentfulContentProvider.
- * @returns The ContentfulContentProvider component.
+ * @returns The rendered `ContentfulContentProvider` component.
  */
 const ContentfulContentProvider = ({
   children,
