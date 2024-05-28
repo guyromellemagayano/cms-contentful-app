@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 
-import { ParamsData } from "@/app/types/page";
+import { ParamsData } from "@/types/page";
 
 export type PathnamesPageProps = {
   params: ParamsData;

@@ -1,13 +1,13 @@
 import { draftMode } from "next/headers";
 import Link from "next/link";
 
-import { ParamsData } from "@/app/types/page";
 import { Avatar } from "@/components/avatar";
 import { DateComponent } from "@/components/date";
 import { CoverImage } from "@/components/images/cover";
 import { MoreStoriesLayout } from "@/components/layouts/more-stories";
 import { Markdown } from "@/components/markdown";
 import { getAllPosts, getPostAndMorePosts } from "@/lib/api";
+import { ParamsData } from "@/types/page";
 
 export async function generateStaticParams() {
   const allPosts = await getAllPosts(false);
