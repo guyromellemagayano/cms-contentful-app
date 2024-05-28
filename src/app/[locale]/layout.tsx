@@ -6,11 +6,13 @@ import {
   unstable_setRequestLocale,
 } from "next-intl/server";
 
-import { FooterLayout } from "@/components/layouts/footer";
+// import { FooterLayout } from "@/components/layouts/footer";
+import { LayoutTemplate } from "@/components/templates/layout";
 import { locales } from "@/configs/next-intl";
 import { WithChildren } from "@/types/common";
 import { ParamsData } from "@/types/page";
 
+import { SettingsFeature } from "@/components/features/settings";
 import Providers from "./providers";
 
 /**
@@ -30,11 +32,11 @@ export const generateMetadata = async ({
 }: {
   params: Pick<ParamsData, "locale">;
 }): Promise<Metadata> => {
-  const localeCheck = locale && locale?.length > 0 ? locale : "en",
-    t = await getTranslations({
-      locale: localeCheck,
-      namespace: "LocaleLayout",
-    });
+  const localeCheck = locale && locale?.length > 0 ? locale : "en";
+  const t = await getTranslations({
+    locale: localeCheck,
+    namespace: "LocaleLayout",
+  });
 
   return {
     title: t("title"),
@@ -89,10 +91,10 @@ const LocaleLayout = async <PD extends ParamsData>({
       <body>
         <NextIntlClientProvider messages={messages}>
           <Providers>
-            <section className="min-h-screen">
-              <main>{children}</main>
-              <FooterLayout />
-            </section>
+            <LayoutTemplate>
+              {children}
+              <SettingsFeature />
+            </LayoutTemplate>
           </Providers>
         </NextIntlClientProvider>
       </body>

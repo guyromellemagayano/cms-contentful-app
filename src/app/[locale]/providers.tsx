@@ -3,7 +3,7 @@
 import ContentfulContentProvider from "@/contexts/contentful";
 import LivePreviewProvider from "@/contexts/live-preview";
 import MuiProvider from "@/contexts/mui";
-import ReactQuery from "@/contexts/react-query";
+import ReactQueryProvider from "@/contexts/react-query";
 // import { useContentfulContext } from "@/hooks/contentful";
 import type { ParamsData } from "@/types/page";
 
@@ -15,9 +15,9 @@ const Providers = ({ children }: ProvidersProps) => {
   return (
     <ContentfulContentProvider>
       <LivePreviewProvider>
-        <ReactQuery>
+        <ReactQueryProvider>
           <MuiProvider>{children}</MuiProvider>
-        </ReactQuery>
+        </ReactQueryProvider>
       </LivePreviewProvider>
     </ContentfulContentProvider>
   );
