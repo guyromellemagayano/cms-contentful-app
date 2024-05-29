@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Avatar } from "@/components/avatar";
 import { DateComponent } from "@/components/date";
 import { CoverImage } from "@/components/images/cover";
+import { WithAny } from "@/types/common";
 
 export type PostPreviewProps<
   CID extends CoverImageData,
@@ -16,29 +17,24 @@ export type PostPreviewProps<
   slug: string;
 };
 
-export type CoverImageData = {
+export type CoverImageData = WithAny & {
   url: string;
-  [key: string]: any;
 };
 
-export type AuthorData<PAD extends PictureAuthorData> = {
+export type AuthorData<PAD extends PictureAuthorData> = WithAny & {
   name: string;
   picture: PAD;
-  [key: string]: any;
 };
 
-export type PictureAuthorData = {
+export type PictureAuthorData = WithAny & {
   url: string;
-  [key: string]: any;
 };
 
 export type MoreStoriesLayoutProps<MPD extends MorePostsData> = {
   morePosts: Array<MPD>;
 };
 
-export type MorePostsData = {
-  [key: string]: any;
-};
+export type MorePostsData = WithAny;
 
 /**
  * Renders the layout for displaying more stories.
@@ -50,6 +46,7 @@ export type MorePostsData = {
  * @param excerpt - The excerpt of the story.
  * @param author - The author data.
  * @param slug - The slug of the story.
+ * @param rest - The rest of the properties to apply.
  * @returns The rendered layout component.
  */
 export const PostPreview = <
@@ -62,9 +59,10 @@ export const PostPreview = <
   excerpt,
   author,
   slug,
+  ...rest
 }: PostPreviewProps<CID, AD>) => {
   return (
-    <div>
+    <div {...rest}>
       <div className="mb-5">
         <CoverImage title={title} slug={slug} url={coverImage.url} />
       </div>
@@ -97,13 +95,15 @@ PostPreview.displayName = "PostPreview";
  * Renders a layout for displaying more stories.
  * @template MPD - The type of data for more posts.
  * @param morePosts - The data for more posts.
+ * @param rest - The rest of the properties to apply.
  * @returns The rendered MoreStoriesLayout component.
  */
 const MoreStoriesLayout = <MPD extends MorePostsData>({
   morePosts,
+  ...rest
 }: MoreStoriesLayoutProps<MPD>) => {
   return (
-    <section>
+    <section {...rest}>
       <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
         More Stories
       </h2>
