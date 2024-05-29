@@ -4,7 +4,7 @@ import { draftMode } from "next/headers";
 import { IntroLayout } from "@/components/layouts/intro";
 import { MoreStoriesLayout } from "@/components/layouts/more-stories";
 import { HeroPost } from "@/components/posts/hero";
-import { getAllPosts } from "@/lib/api";
+import { getAllPosts } from "@/libs/api";
 
 /**
  * Renders a page component.

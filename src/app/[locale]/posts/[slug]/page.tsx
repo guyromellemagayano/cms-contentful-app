@@ -6,7 +6,7 @@ import { DateComponent } from "@/components/date";
 import { CoverImage } from "@/components/images/cover";
 import { MoreStoriesLayout } from "@/components/layouts/more-stories";
 import { Markdown } from "@/components/markdown";
-import { getAllPosts, getPostAndMorePosts } from "@/lib/api";
+import { getAllPosts, getPostAndMorePosts } from "@/libs/api";
 import { ParamsData } from "@/types/page";
 
 export async function generateStaticParams() {
