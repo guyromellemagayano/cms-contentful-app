@@ -12,4 +12,6 @@ export type WithClassName<T = {}> = T & {
   className?: string;
 };
 
-export type WithChildrenAndClassName<T = {}> = WithChildren<WithClassName<T>>;
+export type WithId<T = {}> = T & {
+  id: string;
+};
