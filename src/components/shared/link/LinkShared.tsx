@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import queryString from "query-string";
 
-import { WithChildren } from "@/types/common";
+import { WithAny, WithChildrenAndClassName } from "@/types/common";
 
 const useStyles = makeStyles(() => ({
   baseAnchor: {
@@ -16,24 +16,25 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export type LinkSharedProps = WithChildren & {
-  href?: string;
-  as?: string;
-  target?: string;
-  dropUrlParams?: boolean;
-  className?: string;
-  withoutMaterial?: boolean;
-  underline?: boolean;
-  onClick?: () => any;
-  isButton?: boolean;
-  variant?: "text" | "outlined" | "contained" | undefined;
-  size?: "small" | "medium" | "large" | undefined;
-  color?: any;
-  startIcon?: any;
-  endIcon?: any;
-  urlParams?: string;
-  title?: string;
-};
+export type LinkSharedProps = WithAny &
+  WithChildrenAndClassName & {
+    href?: string;
+    as?: string;
+    target?: string;
+    dropUrlParams?: boolean;
+    className?: string;
+    withoutMaterial?: boolean;
+    underline?: boolean;
+    onClick?: () => any;
+    isButton?: boolean;
+    variant?: "text" | "outlined" | "contained" | undefined;
+    size?: "small" | "medium" | "large" | undefined;
+    color?: any;
+    startIcon?: any;
+    endIcon?: any;
+    urlParams?: string;
+    title?: string;
+  };
 
 /**
  * Renders the shared link component for the `contentful` API to consume.
@@ -54,6 +55,7 @@ export type LinkSharedProps = WithChildren & {
  * @param endIcon - The end icon to apply.
  * @param urlParams - The URL parameters to apply.
  * @param title - The title attribute value.
+ * @param rest - The rest of the properties to apply.
  * @returns The rendered component.
  */
 const LinkShared = ({
@@ -74,6 +76,7 @@ const LinkShared = ({
   target = "_self",
   as,
   href = "",
+  ...rest
 }: LinkSharedProps) => {
   let updatedHref = href;
   let updatedAs = as;
@@ -135,6 +138,7 @@ const LinkShared = ({
         startIcon={startIcon}
         endIcon={endIcon}
         title={title}
+        {...rest}
       >
         {children}
       </MuiButton>
@@ -148,6 +152,7 @@ const LinkShared = ({
         rel="noopener noreferrer"
         onClick={() => onClick && onClick()}
         title={title}
+        {...rest}
       >
         {children}
       </MuiLink>
@@ -162,6 +167,7 @@ const LinkShared = ({
         className={clsx(classes.baseAnchor, className)}
         title={title}
         passHref
+        {...rest}
       >
         {children}
       </Link>
@@ -170,7 +176,7 @@ const LinkShared = ({
 
   if (isButton) {
     return (
-      <Link href={href} as={as} passHref>
+      <Link href={href} as={as} passHref {...rest}>
         <MuiButton
           href={as}
           className={className}
@@ -189,7 +195,7 @@ const LinkShared = ({
   }
 
   return (
-    <Link href={href} as={as} passHref>
+    <Link href={href} as={as} passHref {...rest}>
       <MuiLink
         href={as}
         className={className}
