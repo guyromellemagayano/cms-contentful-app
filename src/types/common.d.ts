@@ -5,7 +5,7 @@ export type WithAny<T = {}> = T & {
 };
 
 export type WithChildren<T = {}> = T & {
-  children: ReactNode;
+  children: ReactNode | ReactNode[];
 };
 
 export type WithClassName<T = {}> = T & {
