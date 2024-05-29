@@ -3,8 +3,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
-    "setup": "node ./lib/setup.js"
+    "start": "next start"
   },
   "dependencies": {
     "@contentful/live-preview": "^4.1.3",
