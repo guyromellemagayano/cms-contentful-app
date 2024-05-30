@@ -61,3 +61,63 @@ export const optimizeLineBreak = (str: string): string => {
 
   return `${tokens.join(" ")}\u00A0${lastToken}`;
 };
+
+export type GetLinkDisplayTextProps = {
+  pageName?: string;
+  categoryName?: string;
+  postName?: string;
+  slug?: string;
+  sys?: GetLinkDisplayTextSysProps;
+};
+
+export type GetLinkDisplayTextSysProps = {
+  id: string;
+};
+
+/**
+ * Retrieves the display text for a link based on the provided props.
+ * @param {GetLinkDisplayTextProps} props - The properties to retrieve the display text with.
+ * @returns The display text for the link.
+ */
+export const getLinkDisplayText = (props: GetLinkDisplayTextProps): string => {
+  const { pageName, categoryName, postName, slug, sys } = props;
+
+  if (pageName && pageName?.length > 0) {
+    return pageName;
+  }
+
+  if (categoryName && categoryName?.length > 0) {
+    return categoryName;
+  }
+
+  if (postName && postName?.length > 0) {
+    return postName;
+  }
+
+  return slug && slug?.length > 0 ? slug : "";
+};
+
+export type GetLinkHrefPrefixProps = GetLinkDisplayTextProps;
+
+/**
+ * Returns the href prefix based on the provided props.
+ * @param {GetLinkHrefPrefixProps} props - The properties to retrieve the href prefix with.
+ * @returns The href prefix.
+ */
+export const getLinkHrefPrefix = (props: GetLinkHrefPrefixProps): string => {
+  const { pageName, categoryName, postName, slug, sys } = props;
+
+  if (pageName && pageName?.length > 0 && slug && slug?.length > 0) {
+    return `/${slug}`;
+  }
+
+  if (categoryName && categoryName?.length > 0 && slug && slug?.length > 0) {
+    return `/category/${slug}`;
+  }
+
+  if (postName && postName?.length > 0 && slug && slug?.length > 0) {
+    return `/post/${slug}`;
+  }
+
+  return slug && slug?.length > 0 ? `/${slug}` : "";
+};
