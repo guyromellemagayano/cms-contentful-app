@@ -1,17 +1,21 @@
 import { format } from "date-fns";
 
-export type DateComponentProps = {
+import type { WithAny } from "@/types/common";
+
+export type DateComponentProps = WithAny & {
   dateString: string;
 };
 
 /**
  * Renders a date component.
- * @param dateString - The date string to be formatted and displayed.
- * @returns The rendered date component.
+ * @param {DateComponentProps} props - The properties to render the component with.
+ * @returns The rendered component.
  */
-const DateComponent = ({ dateString }: DateComponentProps) => {
+const DateComponent = (props: DateComponentProps) => {
+  const { dateString, ...rest } = props;
+
   return (
-    <time dateTime={dateString}>
+    <time dateTime={dateString} {...rest}>
       {format(new Date(dateString), "LLLL	d, yyyy")}
     </time>
   );
