@@ -1,4 +1,4 @@
-import { WithAny } from "./common";
+import type { WithAny } from "./common";
 
 export type ParamsData = WithAny & {
   slug?: string;
