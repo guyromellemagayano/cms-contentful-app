@@ -9,7 +9,7 @@ import {
 // import { FooterLayout } from "@/components/layouts/footer";
 import { LayoutTemplate } from "@/components/templates/layout";
 import { locales } from "@/configs/next-intl";
-import { WithChildren } from "@/types/common";
+import type { WithChildren } from "@/types/common";
 import { ParamsData } from "@/types/page";
 
 import { SettingsFeature } from "@/components/features/settings";

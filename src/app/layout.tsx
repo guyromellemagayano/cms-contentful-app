@@ -1,4 +1,4 @@
-import { WithChildren } from "@/types/common";
+import type { WithChildren } from "@/types/common";
 
 export type RootLayoutProps = WithChildren;
 
