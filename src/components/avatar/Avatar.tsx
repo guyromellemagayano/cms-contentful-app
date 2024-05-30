@@ -1,20 +1,22 @@
 import ContentfulImage from "@/components/images/contentful/ContentfulImage";
 import { PictureAuthorData } from "@/components/layouts/more-stories";
+import type { WithAny } from "@/types/common";
 
-export type AvatarProps = {
+export type AvatarProps = WithAny & {
   name: string;
   picture: PictureAuthorData;
 };
 
 /**
- * Avatar component displays an avatar with a name.
- * @param name - The name of the avatar.
- * @param picture - The picture object of the avatar.
- * @returns The rendered Avatar component.
+ * Renders an avatar component.
+ * @param {AvatarProps} props - The properties to render the component with.
+ * @returns The rendered component
  */
-const Avatar = ({ name, picture }: AvatarProps) => {
+const Avatar = (props: AvatarProps) => {
+  const { name, picture, ...rest } = props;
+
   return (
-    <div className="flex items-center">
+    <div className="flex items-center" {...rest}>
       <div className="mr-4 w-12 h-12">
         <ContentfulImage
           alt={name}
