@@ -1,293 +1,331 @@
-# A statically generated blog example using Next.js and Contentful
+# Contentful Marketing Starter Template
 
-This example showcases Next.js's [Static Generation](https://nextjs.org/docs/basic-features/pages) feature using [Contentful](https://www.contentful.com/) as the data source.
+A Marketing Starter Template powered by Next.js & Contentful, pre-designed with optimized & adjustable pages,
+components, and data management.
 
-## Demo
+![The homepage of the Marketing Starter Template](marketing-starter-template.jpg "The homepage of the Marketing Starter Template")
 
-### [https://app-router-contentful.vercel.app/](https://app-router-contentful.vercel.app/)
+$~$
 
-## Deploy your own
+## What is Contentful?
 
-Using the Deploy Button below, you'll deploy the Next.js project as well as connect it to your Contentful space using the Vercel Contentful Integration.
+[Contentful](https://www.contentful.com/) provides content infrastructure for digital teams to power websites, apps, and
+devices. Unlike a CMS, Contentful was built to integrate with the modern software stack. It offers a central hub for
+structured content, powerful management, and delivery APIs, and a customizable web app that enables developers and
+content creators to ship their products faster.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fcms-contentful&project-name=nextjs-contentful-blog&repository-name=nextjs-contentful-blog&demo-title=Next.js+Blog&demo-description=Static+blog+with+multiple+authors+using+Draft+Mode&demo-url=https%3A%2F%2Fnext-blog-contentful.vercel.app%2F&demo-image=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Fv1625705016%2Ffront%2Fexamples%2FCleanShot_2021-07-07_at_19.43.15_2x.png&integration-ids=oac_aZtAZpDfT1lX3zrnWy7KT9VA&env=CONTENTFUL_PREVIEW_SECRET&envDescription=Any%20URL%20friendly%20value%20to%20secure%20Draft%20Mode)
+$~$
 
-### Related examples
+## DISCLAIMER ⚠️
 
-- [AgilityCMS](/examples/cms-agilitycms)
-- [Builder.io](/examples/cms-builder-io)
-- [ButterCMS](/examples/cms-buttercms)
-- [Contentful](/examples/cms-contentful)
-- [Cosmic](/examples/cms-cosmic)
-- [DatoCMS](/examples/cms-datocms)
-- [DotCMS](/examples/cms-dotcms)
-- [Drupal](/examples/cms-drupal)
-- [Enterspeed](/examples/cms-enterspeed)
-- [Ghost](/examples/cms-ghost)
-- [GraphCMS](/examples/cms-graphcms)
-- [Kontent](/examples/cms-kontent-ai)
-- [Prepr](/examples/cms-prepr)
-- [Prismic](/examples/cms-prismic)
-- [Sanity](/examples/cms-sanity)
-- [Sitefinity](/examples/cms-sitefinity)
-- [Storyblok](/examples/cms-storyblok)
-- [TakeShape](/examples/cms-takeshape)
-- [Umbraco heartcore](/examples/cms-umbraco-heartcore)
-- [Webiny](/examples/cms-webiny)
-- [Blog Starter](/examples/blog-starter)
-- [WordPress](/examples/cms-wordpress)
+The Starter Templates experience is currently only available to new users.
 
-## How to use
+To benefit from this experience, please follow this link to create a new
+account and select the template to install: [https://www.contentful.com/starter-templates/marketing-website/sign-up/?action=create_starter_template](https://www.contentful.com/starter-templates/marketing-website/sign-up/?action=create_starter_template&utm_source=github.com&utm_medium=referral&utm_campaign=template-marketing-webapp-nextjs).
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+Alternatively, to immediately start the auto installation of this template after creating a new account, please follow this link:
+[https://www.contentful.com/starter-templates/marketing-website/sign-up/?action=create_starter_template&template_name=marketing](https://www.contentful.com/starter-templates/marketing-website/sign-up/?action=create_starter_template&template_name=marketing&utm_source=github.com&utm_medium=referral&utm_campaign=template-marketing-webapp-nextjs).
 
-```bash
-npx create-next-app --example cms-contentful cms-contentful-app
-```
+$~$
 
-```bash
-yarn create next-app --example cms-contentful cms-contentful-app
-```
+## Begin your journey with Contentful and the Marketing Starter Template
 
-```bash
-pnpm create next-app --example cms-contentful cms-contentful-app
-```
+Follow this [guide](https://github.com/contentful/template-marketing-webapp-nextjs/blob/main/docs/tutorials/contentful-and-the-starter-template.md/?utm_source=github.com-guide&utm_medium=referral&utm_campaign=template-marketing-webapp-nextjs) to understand the relationship between
+Contentful and the Starter Template source code through guided steps:
 
-## Configuration
+- Entry editing, and updates preview in the Starter Template application (online/locally)
+- Content type editing in the Contentful web app, as well as in the Starter Template's code
 
-### Step 1. Create an account and a space on Contentful
+$~$
 
-First, [create an account on Contentful](https://www.contentful.com/sign-up/).
+## Features
 
-After creating an account, create a new empty **space** from the [dashboard](https://app.contentful.com/) and assign to it any name of your liking.
+- Composable content through powerful & flexible content modeling.
+- Localization ready.
+- SEO ready.
+- Server-side rendering with Next.js[^1].
+- Optimized data management with React Query[^2].
+- Generation of GraphQL[^3] typed code (schema, types, and React Query hooks), in sync with the content types through
+  graphql-codegen[^4].
+- Enhanced Developer Experience with TypeScript[^5].
 
-### Step 2. Create a content model
+$~$
 
-The [content model](https://www.contentful.com/developers/docs/concepts/data-model/) defines the data structures of your application/websites. The structures are flexible and you can tailor them to your needs.
+## Getting started
 
-For this example you need to create a content model that defines an author and a post content type. **You can create these two by running a script or by doing it manually** to familiarize yourself with the Contentful user interface.
+To get started, read the following guidelines.
 
-#### Run a script to create the content model
+- [Environment variables](./README.md#environment-variables)
+- [Dependencies](./README.md#dependencies)
+- [Development](./README.md#development)
+- [Contentful API & GraphQL](./README.md#contentful-api--graphql)
+- [Contentful Components](./README.md#contentful-components)
+- [Deployment](./README.md#deployment)
 
-This project includes a setup script which you can use to set up the content model expected by the source code.
+$~$
 
-In your Contentful dashboard go to **Settings > General Settings** and copy the **Space ID**.
+### Environment variables
 
-Next, go to **Settings > CMA tokens** and create a new token by clicking **Create personal access token**. This token has the same access rights as the logged in user. **Do not share it publicly**, you will only use it to set up your space and can delete it afterwards.
+In order to authenticate the requests to the Contentful APIs, the following values are necessary:
 
-With the space ID and management access token at hand run the following command:
+- Your space ID: [https://www.contentful.com/help/find-space-id/](https://www.contentful.com/help/find-space-id/)
+- Contentful Delivery API
+  token: [https://www.contentful.com/developers/docs/references/content-delivery-api/](https://www.contentful.com/developers/docs/references/content-delivery-api/)
+- Contentful Preview API
+  token: [https://www.contentful.com/developers/docs/references/content-preview-api/](https://www.contentful.com/developers/docs/references/content-preview-api/)
 
-```
-npx cross-env CONTENTFUL_SPACE_ID=YOUR_SPACE_ID CONTENTFUL_MANAGEMENT_TOKEN=XXX npm run setup
-```
+Rename the `.env.example` file to `.env` and add the necessary values.
 
-This command will create the needed content structures and set up your Contentful space ready to use. The output should look as follows:
+$~$
 
-```
-> cms-contentful@1.0.0 setup /Users/stefan.judis/Projects/next.js/examples/cms-contentful
-> node ./contentful/setup.js $CONTENTFUL_SPACE_ID $CONTENTFUL_MANAGEMENT_TOKEN
+### Dependencies
 
-┌──────────────────────────────────────────────────┐
-│ The following entities are going to be imported: │
-├─────────────────────────────────┬────────────────┤
-│ Content Types                   │ 2              │
-├─────────────────────────────────┼────────────────┤
-│ Editor Interfaces               │ 2              │
-├─────────────────────────────────┼────────────────┤
-│ Locales                         │ 1              │
-├─────────────────────────────────┼────────────────┤
-│ Webhooks                        │ 0              │
-├─────────────────────────────────┼────────────────┤
-│ Entries                         │ 0              │
-├─────────────────────────────────┼────────────────┤
-│ Assets                          │ 0              │
-└─────────────────────────────────┴────────────────┘
- ✔ Validating content-file
- ✔ Initialize client (1s)
- ✔ Checking if destination space already has any content and retrieving it (2s)
- ✔ Apply transformations to source data (1s)
- ✔ Push content to destination space
-   ✔ Connecting to space (1s)
-   ...
-   ...
-   ...
-```
-
-#### Create the content model manually
-
-##### Create an `Author` content type
-
-From your contentful space, go to **Content model** and add a new content type:
-
-- Give it the **Name** `Author`, the **Api Identifier** should be `author`
-
-Once the content model is saved, add these fields (you don't have to modify the settings unless specified):
-
-- `name` - **Text** field (type **short text**). **Field ID** should be set to `name`
-- `picture` - **Media** field (type **one file**). **Field ID** should be set to `picture`
-
-Save the content type and continue.
-
-##### Create a `post` type
-
-From your contentful space, go to **Content model** and add another content type:
-
-- Give it the **Name** `Post`, the **Api Identifier** should be `post`
-
-Next, add these fields (you don't have to modify the settings unless specified):
-
-- `title` - **Text** field (type **short text**)
-- `content` - **Rich text** field
-- `excerpt` - **Text** field (type **Long text, full-text search**)
-- `coverImage` - **Media** field (type **one file**)
-- `date` - **Date and time** field
-- `slug` - **Text** field. You can optionally go to the settings of this field, and under **Appearance**, select **Slug** to display it as a slug of the `title` field.
-- `author` - **Reference** field (type **one reference**)
-
-Save the content type and continue.
-
-### Step 3. Validate your content model
-
-After setting up the content model (either manually or by running `npm run setup` or `yarn setup`), it should look as follows.
-
-**Content model overview**
-
-![Content model overview](https://github.com/vercel/next.js/assets/9113740/d3f76907-7046-4d94-b285-eb89b87aa223)
-
-### Step 4. Populate Content
-
-Go to the **Content** section in your space, then click on **Add entry** and select the **Author** content type:
-
-- You just need **1 author entry**.
-- Use dummy data for the text.
-- For the image, you can download one from [Unsplash](https://unsplash.com/).
-
-Next, create another entry with the content type **Post**:
-
-- We recommend creating at least **2 post entries**.
-- Use dummy data for the text.
-- For images, you can download them from [Unsplash](https://unsplash.com/).
-- Pick the **author** you created earlier.
-
-**Important:** For each entry and asset, you need to click on **Publish**. If not, the entry will be in draft state.
-
-![Published content entry](https://github.com/vercel/next.js/assets/9113740/e1b4a3fe-45f4-4851-91db-8908d3ca18e9)
-
-### Step 5. Set up environment variables
-
-From your contentful space, go to **Settings > API keys**. There will be an example Content delivery / preview token - you can use these API keys. (You may also create a new key.)
-
-Next, copy the `.env.local.example` file in this directory to `.env.local` (which will be ignored by Git):
+To install the necessary dependencies, run:
 
 ```bash
-cp .env.local.example .env.local
+yarn
 ```
 
-Then set each variable on `.env.local`:
-
-- `CONTENTFUL_SPACE_ID` should be the **Space ID** field of your API Key
-- `CONTENTFUL_ACCESS_TOKEN` should be the **[Content Delivery API](https://www.contentful.com/developers/docs/references/content-delivery-api/) - access token** field of your API key
-- `CONTENTFUL_PREVIEW_ACCESS_TOKEN` should be the **[Content Preview API](https://www.contentful.com/developers/docs/references/content-preview-api/) - access token** field of your API key
-- `CONTENTFUL_PREVIEW_SECRET` should be any value you want. It must be URL friendly as the dashboard will send it as a query parameter to enable Next.js Draft Mode
-- - `CONTENTFUL_REVALIDATE_SECRET` should be any value you want. This will be the value you pass in as a secret header from the Contentful Webhook settings to use **[On-Demand Revalidation](https://vercel.com/docs/concepts/next.js/incremental-static-regeneration#on-demand-revalidation)**
-
-Your `.env.local` file should look like this:
+### Run the Starter Template in development mode
 
 ```bash
-CONTENTFUL_SPACE_ID=...
-CONTENTFUL_ACCESS_TOKEN=...
-CONTENTFUL_PREVIEW_ACCESS_TOKEN=...
-CONTENTFUL_PREVIEW_SECRET=...
-CONTENTFUL_REVALIDATE_SECRET=...
-```
-
-### Step 6. Run Next.js in development mode
-
-```bash
-npm install
-npm run dev
-
-# or
-
-yarn install
 yarn dev
 ```
 
-Your blog should be up and running on [http://localhost:3000](http://localhost:3000)! If it doesn't work, post on [GitHub discussions](https://github.com/vercel/next.js/discussions).
+The Starter Template should be up and running on `http://localhost:3000`.
 
-### Step 7. Try Draft Mode
+All necessary dependencies are installed under `node_modules` and any necessary tools can be accessed via npm scripts.
 
-In your Contentful space, go to **Settings > Content preview** and add a new content preview for development.
+$~$
 
-The **Name** field may be anything, like `Development`. Then, under **Content preview URLs**, check **Post** and set its value to:
+## Development
 
-```
-http://localhost:3000/api/draft?secret=<CONTENTFUL_PREVIEW_SECRET>&slug={entry.fields.slug}
-```
+### Node
 
-Replace `<CONTENTFUL_PREVIEW_SECRET>` with its respective value in `.env.local`.
+It is recommended to use the Node version listed in the `.nvmrc` file, we recommend
+using [nvm](https://github.com/nvm-sh/nvm) to easily switch between Node versions.
 
-![Content preview setup](https://github.com/vercel/next.js/assets/9113740/f1383d68-ea2b-4adf-974f-235b8c098745)
+$~$
 
-Once saved, go to one of the posts you've created and:
+### Husky & git hooks
 
-- **Update the title**. For example, you can add `[Draft]` in front of the title.
-- The state of the post will switch to **CHANGED** automatically. **Do not** publish it. By doing this, the post will be in draft state.
-- In the sidebar, you will see the **Open preview** button. Click on it!
+This repository makes use of [Husky](https://github.com/typicode/husky) to enforce commit hooks.
 
-![Content entry overview](https://github.com/vercel/next.js/assets/9113740/cc0dff9a-c57e-4ec4-85f1-22ab74af2b6b)
+The config for both the `pre-commit` and `pre-push` hooks can be found in the `.husky` folder, located in the root of
+the project.
 
-You will now be able to see the updated title. To manually exit Draft Mode, you can navigate to `/api/disable-draft` in the browser.
+---
 
-### Step 8. Deploy on Vercel
+#### Pre-commit
 
-You can deploy this app to the cloud with [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+Before allowing a commit, we require a successful result from the TypeScript compiler (`tsc`) and our `lint-staged`
+script will be run.
 
-#### Deploy Your Local Project
+This ensures all ESLint and Prettier rules are enforced on the files that are staged to be committed.
 
-To deploy your local project to Vercel, push it to GitHub/GitLab/Bitbucket and [import to Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example).
+The `tsc` command is run separately from the `lint-staged` step because we require the Typescript compiler to sample
+_all_ files.
 
-**Important**: When you import your project on Vercel, make sure to click on **Environment Variables** and set them to match your `.env.local` file.
+This is important to ensure that no deviating types were introduced by
+the [codegen](./README.md#graphql--code-generation) for example.
 
-#### Deploy from Our Template
+---
 
-Alternatively, you can deploy using our template by clicking on the Deploy button below.
+#### Pre-push
 
-This will deploy the Next.js project as well as connect it to your Contentful space using the Vercel Contentful Integration. If you are using Draft Mode, make sure to add `CONTENTFUL_PREVIEW_SECRET` as an [Environment Variable](https://vercel.com/docs/concepts/projects/environment-variables) as well.
+The same two tasks are run for pre-push and for pre-commit.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fcms-contentful&project-name=nextjs-contentful-blog&repository-name=nextjs-contentful-blog&demo-title=Next.js+Blog&demo-description=Static+blog+with+multiple+authors+using+Draft+Mode&demo-url=https%3A%2F%2Fnext-blog-contentful.vercel.app%2F&demo-image=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Fv1625705016%2Ffront%2Fexamples%2FCleanShot_2021-07-07_at_19.43.15_2x.png&integration-ids=oac_aZtAZpDfT1lX3zrnWy7KT9VA&env=CONTENTFUL_PREVIEW_SECRET,CONTENTFUL_REVALIDATE_SECRET&envDescription=Any%20URL%20friendly%20value%20to%20secure%20Your%20App)
+---
 
-### Step 9. Try using On-Demand Revalidation
+#### Overriding the Husky git hooks
 
-In your Contentful space, go to **Settings > Webhooks** and add a new webhook:
+In case of wanting to bypass the `pre-commit` or `pre-push` hooks, pass a `--noVerify` flag to your Git commands.
 
-- **Give the webhook a name**
-- **Activate:** Check the activate checkbox to ensure the webhook is marked as active
-- **Specify the POST URL:** Using the URL from your Vercel deployment in step 8, add the path `/api/revalidate` at the end, so it would look something like:
+⚠️ Make sure you only use this if you know why you're using it. ⚠️
 
-  ```
-  https://<YOUR_VERCEL_DEPLOYMENT_URL>/api/revalidate
-  ```
+$~$
 
-  Replace `<YOUR_VERCEL_DEPLOYMENT_URL>` with your own deployment URL as noted in the Vercel dashboard.
+### Contentful API & GraphQL
 
-- **Specify Triggers:** You can choose to trigger for all events or specific events only, such as the Publishing and Unpublishing of Entries and Assets, as shown below.
+This project makes use of Contentful's [GraphQL API](https://www.contentful.com/developers/docs/references/graphql/).
 
-  ![Content webhook url](https://github.com/vercel/next.js/assets/9113740/c8df492a-57d6-42a1-8a3c-b0de3d6ad42f)
+API calls made to the Contentful GraphQL endpoint are made through React Query `useQuery` hooks.
 
-- **Specify Secret Header:** Add a secret header named `x-vercel-reval-key` and enter the value of the
-  `CONTENTFUL_REVALIDATE_SECRET` from before.
+The hooks are generated from the `.graphql` files collocated within the components, the following happens:
 
-  ![Content secret header](https://github.com/vercel/next.js/assets/9113740/574935e6-0d31-4e4f-b914-8b01bdf03d5e)
+1. `[folderName]/[fileName].graphql` file, containing a query, is detected by
+   the [codegen](./README.md#graphql--code-generation)
+2. `[folderName]/__generated/[fileName].generated.ts` is generated
+3. Within the generated file, a new hook is generated with the following pattern: `use[fileName]`
+4. The hook can now be imported and used within the `.ts(x)` files in the component folder
 
-- **Set Content type:** Set content type to `application/json` in the dropdown.
+$~$
 
-  ![Content publish changes](https://github.com/vercel/next.js/assets/9113740/78bd856c-ece1-4bf3-a330-1d544abd858d)
+### GraphQL & code generation
 
-- **Edit post:** Now, try editing the title of one of your blog posts in Contentful and click Publish. You should see the changed reflected in the website you just deployed, all without triggering a build! Behind the scenes a call was made to the revalidate api that triggers a revalidation of both the landing page and the specific post that was changed.
+We use `graphql-codegen` to generate a type-safe API client, utilizing [React Query](https://tanstack.com/query/v4/) as
+the "client".
 
-  ![Content publish changes](https://github.com/vercel/next.js/assets/9113740/ad96bfa7-89c1-4e46-9d9c-9067176c9769)
+The data for the hooks is pre-fetched on the server-side.
 
-- **Verify:** You can verify if your request was made successfully by checking the webhook request log on Contentful and checking for a successful 200 status code, or by having your functions tab open on Vercel when committing the change (log drains may also be used). If you are experiencing issues with the api call, ensure you have correctly entered in the value for environment variable `CONTENTFUL_REVALIDATE_SECRET` within your Vercel deployment.
+For more information on how this data is hydrated please
+read [the official documentation](https://tanstack.com/query/v4/docs/guides/ssr#using-hydration).
 
-  ![Content successful request](https://github.com/vercel/next.js/assets/9113740/ed1ffbe9-4dbf-4ec6-9c1f-39c8949c4d38)
+---
+
+#### Commands
+
+In order to (re-)generate the GraphQL schema, types and hooks, please use either of the following commands:
+
+- `yarn graphql-codegen:generate` generates a schema, types and code to fetch data from the Contentful APIs
+- `yarn graphql-codegen:watch` similar to the `generate` command, but it runs as a watch task which will rerun the steps
+  when changes are made in the `.graphql` files
+
+The first steps of the codegen generate files that contain the GraphQL schema and matching TypeScript types.
+They're generated to the `src/lib/__generated` folder and ought to be committed once altered/added to the repository.
+
+Additionally, the codegen watches .graphql files in our `src` folder, if it runs successfully it generates
+a `__generated` folder collocated in the folder where the `.graphql` file was found.
+
+One exception to this rule is the `src/lib/fragments` folder which contains shared GraphQL Fragments that are used in
+several other queries/fragments.
+
+The TS types for these files are generated in the same location, in a `__generated` folder and like the other files
+ought to be committed.
+
+---
+
+#### Configuration
+
+The configuration for the codegen can be found in `codegen.ts`, located in the root of the project.
+
+$~$
+
+### Contentful Components
+
+The term _Contentful Components_ (_ctf-components_ for short) is used for React components that have an equivalent
+Contentful _content type_.
+
+E.g. all React components needed for rendering the _content-type_ `HeroBanner` can be found in the
+folder `src/features/ctf-components/ctf-hero-banner`.
+
+Usually a _ctf-component_ is composed of 3 files:
+
+- `ctf-[contentypeName].graphql`: holding the query strings needed for the GraphQL request to fetch the components data.
+- `ctf-[contentypeName]-gql.tsx`: React component which executes the GraphQL query and passes the result to a component
+  for rendering.
+- `ctf-[contentypeName].tsx`: the React component which is actually rendering the content type.
+
+Optionally, a folder with TypeScript interfaces which were generated by GraphQL codegen can also be included:
+
+- `/__generated/`: (see [GraphQL & code generation](./README.md#graphql--code-generation)).
+
+$~$
+
+### Component Resolver and content type mapping
+
+There is a _component-resolver_ (_./src/components/component-resolver.tsx_) React component, which is used to pick the
+right React component for rendering a _content-type_.
+
+It requires as properties the _content type_ `id`, its `__typename` (used by live preview), and optionally the content.
+
+The **component-resolver** then uses a key map to find the right React component (`./src/mappings.ts`), where the key is
+the _content type_ name and the value is the React component.
+
+It will check the map `componentMap` first, and if the _content type_ could be resolved it is assumed all content is
+available.
+The content is then passed to the React component.
+
+If the _content type_ could not be resolved, `componentGqlMap` will be used for resolving.
+If the React component is found the _content type_ `id` and `__typename` will be passed, which is used
+by the component to fetch its data.
+
+According to this pattern, all _ctf-components_ suffixed with `-gql` should be added to `componentGqlMap` and all
+without a suffix should be added to `componentMap`.
+
+$~$
+
+### Creating new Contentful Components
+
+Creating new _ctf-components_ involve the following steps:
+
+- Create a folder for the component files (`./src/ctf-components/ctf-[contentTypeName]`)
+- Create the file for the GraphQL query strings (`./src/ctf-components/ctf-[contentTypeName].graphql`)
+- Optionally, generate TypeScript interfaces for the GraphQL result by calling `yarn graphql-codegen:generate` (
+  see [GraphQL & code generation](./README.md#graphql--code-generation)).
+- Create the React components for rendering (`./src/ctf-components/ctf-[contentTypeName]-gql.tsx`
+  and `./src/ctf-components/ctf-[contentTypeName].tsx`).
+- Add the component to the `componentGqlMap` in `./src/mappings.ts`.
+
+$~$
+
+---
+
+$~$
+
+## Deployment
+
+The Starter Template can be deployed to your hosting provider of choice.
+
+We offer integrations with Vercel and Netlify to speed up the process by clicking one of the deploy buttons below. The GitHub repository and
+the necessary environment variables keys are pre-configured in the hosting provider space.
+
+| Vercel                                                                                                                                                                                                                                                                                                                                                                                                                         | Netlify                                                                                                                                                                                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-marketing-webapp-nextjs&env=CONTENTFUL_SPACE_ID,CONTENTFUL_ACCESS_TOKEN,CONTENTFUL_PREVIEW_ACCESS_TOKEN&envDescription=API%20Keys%20needed%20for%20the%20application&envLink=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-marketing-webapp-nextjs%23environment-variables) | [![Deploy to Netlify Button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-marketing-webapp-nextjs#CONTENTFUL_SPACE_ID=&CONTENTFUL_ACCESS_TOKEN=&CONTENTFUL_PREVIEW_ACCESS_TOKEN=) |
+| [Environment variables docs](https://vercel.com/docs/concepts/projects/environment-variables)                                                                                                                                                                                                                                                                                                                                  | [Environment variables docs](https://docs.netlify.com/environment-variables/overview/)                                                                                                                                                                                                |
+
+Make sure to add the necessary [environment variables values](./README.md#environment-variables) to the hosting provider
+environment variables.
+
+---
+
+### Content preview & live preview
+
+Once you have the Starter Template deployed on your hosting provider, you can update the Content preview URL in your
+space settings.
+
+You can follow our guide to learn how to do
+so: [https://www.contentful.com/help/setup-content-preview](https://www.contentful.com/help/setup-content-preview/?utm_source=github.com-preview-guide&utm_medium=referral&utm_campaign=template-marketing-webapp-nextjs).
+
+For the live preview the basic field tagging for the inspector mode and live updates are already implemented.
+For custom components, you can find the instructions at our [guide](https://www.contentful.com/developers/docs/tutorials/general/live-preview/).
+
+$~$
+
+---
+
+$~$
+
+## Support
+
+If you have a problem with this Starter Template, post a message in
+our [Contentful Community Slack](https://www.contentful.com/slack/).
+
+Can't find your answer there? You can file a feedback issue
+through [this template](https://github.com/contentful/template-marketing-webapp-nextjs/tree/main/.github/ISSUE_TEMPLATE/feedback.md).
+
+If you have other problems with Contentful not related to the Starter Template, you can contact
+the [Customer Support](https://support.contentful.com/).
+
+$~$
+
+## Contributing
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+$~$
+
+## License
+
+MIT License, see [LICENSE](./LICENSE).
+
+$~$
+
+<!-- FOOTNOTES -->
+
+[^1]: [Next.js docs](https://nextjs.org/docs/getting-started)
+[^2]: [React Query](https://tanstack.com/query/v4/docs/overview)
+[^3]: [GraphQL docs](https://graphql.org/learn/)
+[^4]: [graphql-codegen](https://www.the-guild.dev/graphql/codegen)
+[^5]: [TypeScript](https://www.typescriptlang.org/)
