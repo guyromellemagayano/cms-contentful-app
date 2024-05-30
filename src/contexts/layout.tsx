@@ -2,7 +2,7 @@
 
 import { createContext } from "react";
 
-import { WithAny } from "@/types/common";
+import type { WithAny } from "@/types/common";
 
 export type LayoutContextValueProps = WithAny & {
   containerWidth: number;
