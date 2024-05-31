@@ -25,25 +25,17 @@ export type HeroPostProps<
  * Renders a hero post component.
  * @template CID - The type of cover image data.
  * @template AD - The type of author data.
- * @param title - The title of the post.
- * @param coverImage - The cover image data.
- * @param date - The date of the post.
- * @param excerpt - The excerpt of the post.
- * @param author - The author data.
- * @param slug - The slug of the post.
+ * @param {HeroPostProps<CID, AD>} props - The properties to render the post with.
  * @returns The rendered post component.
  */
 const HeroPost = <
   CID extends CoverImageData,
   AD extends AuthorData<PictureAuthorData>
->({
-  title,
-  coverImage,
-  date,
-  excerpt,
-  author,
-  slug,
-}: HeroPostProps<CID, AD>) => {
+>(
+  props: HeroPostProps<CID, AD>
+) => {
+  const { title, coverImage, date, excerpt, author, slug } = props;
+
   return (
     <section>
       <div className="mb-8 md:mb-16">
