@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 /**
  * Renders the settings feature component.
- * @returns The rendered component.
+ * @returns The rendered feature component.
  */
 const SettingsFeature = () => {
   const [enabled, setEnabled] = useState(false);
@@ -68,10 +68,8 @@ const SettingsFeature = () => {
   const classes = useStyles();
   const theme = useTheme();
 
-  /**
-   * Handles the scroll lock behavior when the settings are open or closed.
-   * Adds or removes the "is-scroll-locked" class to the body element based on the settingsOpen state and the current screen size.
-   */
+  // Handles the scroll lock behavior when the settings are open or closed.
+  // Adds or removes the "is-scroll-locked" class to the body element based on the settingsOpen state and the current screen size.
   useEffect(() => {
     if (!settingsOpen) {
       document.body.classList.remove("is-scroll-locked");
