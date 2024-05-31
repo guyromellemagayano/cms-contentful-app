@@ -3,12 +3,12 @@ import Link from "next/link";
 import { Avatar } from "@/components/avatar";
 import { DateComponent } from "@/components/date";
 import { CoverImage } from "@/components/images/cover";
-import { WithAny } from "@/types/common";
+import type { WithAny } from "@/types/common";
 
 export type PostPreviewProps<
   CID extends CoverImageData,
   AD extends AuthorData<PictureAuthorData>
-> = {
+> = WithAny & {
   title: string;
   coverImage: CID;
   date: string;
@@ -37,30 +37,20 @@ export type MoreStoriesLayoutProps<MPD extends MorePostsData> = {
 export type MorePostsData = WithAny;
 
 /**
- * Renders the layout for displaying more stories.
- * @template CID - The type of the cover image data.
- * @template AD - The type of the author data.
- * @param title - The title of the story.
- * @param coverImage - The cover image data.
- * @param date - The date of the story.
- * @param excerpt - The excerpt of the story.
- * @param author - The author data.
- * @param slug - The slug of the story.
- * @param rest - The rest of the properties to apply.
+ * Renders a layout for displaying a post preview.
+ * @template CID - The type of cover image data.
+ * @template AD - The type of author data.
+ * @param {PostPreviewProps<CID, AD>} props - The properties to render the layout with.
  * @returns The rendered layout component.
  */
 export const PostPreview = <
   CID extends CoverImageData,
   AD extends AuthorData<PictureAuthorData>
->({
-  title,
-  coverImage,
-  date,
-  excerpt,
-  author,
-  slug,
-  ...rest
-}: PostPreviewProps<CID, AD>) => {
+>(
+  props: PostPreviewProps<CID, AD>
+) => {
+  const { title, coverImage, date, excerpt, author, slug, ...rest } = props;
+
   return (
     <div {...rest}>
       <div className="mb-5">
