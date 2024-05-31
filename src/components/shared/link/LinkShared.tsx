@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import queryString from "query-string";
 
-import { WithAny, WithChildrenAndClassName } from "@/types/common";
+import type { WithAny, WithChildren, WithClassName } from "@/types/common";
 
 const useStyles = makeStyles(() => ({
   baseAnchor: {
@@ -17,7 +17,8 @@ const useStyles = makeStyles(() => ({
 }));
 
 export type LinkSharedProps = WithAny &
-  WithChildrenAndClassName & {
+  WithClassName &
+  WithChildren & {
     href?: string;
     as?: string;
     target?: string;
@@ -37,47 +38,32 @@ export type LinkSharedProps = WithAny &
   };
 
 /**
- * Renders the shared link component for the `contentful` API to consume.
- * @param href - The URL to link to.
- * @param as - The URL to link to.
- * @param target - The target attribute value.
- * @param dropUrlParams - Indicates whether to drop URL parameters or not.
- * @param className - The class name to apply.
- * @param children - The children components.
- * @param withoutMaterial - Indicates whether to render without material or not.
- * @param underline - Indicates whether to underline the link or not.
- * @param onClick - The function to handle click event.
- * @param isButton - Indicates whether to render as a button or not.
- * @param variant - The button variant to apply.
- * @param size - The button size to apply.
- * @param color - The button color to apply.
- * @param startIcon - The start icon to apply.
- * @param endIcon - The end icon to apply.
- * @param urlParams - The URL parameters to apply.
- * @param title - The title attribute value.
- * @param rest - The rest of the properties to apply.
- * @returns The rendered component.
+ * Renders the shared link component.
+ * @param {LinkSharedProps} props - The properties to render the component with.
+ * @returns The rendered shared component.
  */
-const LinkShared = ({
-  dropUrlParams,
-  className,
-  children,
-  withoutMaterial,
-  underline,
-  onClick,
-  isButton = false,
-  variant,
-  size,
-  color,
-  startIcon,
-  endIcon,
-  urlParams = "",
-  title,
-  target = "_self",
-  as,
-  href = "",
-  ...rest
-}: LinkSharedProps) => {
+const LinkShared = (props: LinkSharedProps) => {
+  const {
+    dropUrlParams,
+    className,
+    children,
+    withoutMaterial,
+    underline,
+    onClick,
+    isButton = false,
+    variant,
+    size,
+    color,
+    startIcon,
+    endIcon,
+    urlParams = "",
+    title,
+    target = "_self",
+    as,
+    href = "",
+    ...rest
+  } = props;
+
   let updatedHref = href;
   let updatedAs = as;
 
