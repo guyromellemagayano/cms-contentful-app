@@ -10,6 +10,7 @@ import {
 import { makeStyles } from "@mui/styles";
 import { useTranslations } from "next-intl";
 
+import { NavigationGqlCtfComponentFeature } from "@/components/features/ctf-components/navigation";
 import { LinkShared } from "@/components/shared/link";
 import { ColorfulCoinLogo } from "@/components/svg/icons";
 import {
@@ -81,11 +82,12 @@ export type HeaderTemplateProps = {
 
 /**
  * Render the header template component.
- * @param isMenuOpen - Indicates whether the menu is open or not.
- * @param onMenuClick - The function to handle menu click event.
- * @returns The rendered component.
+ * @param {HeaderTemplateProps} props - The properties to render the component with.
+ * @returns The rendered template component.
  */
-const HeaderTemplate = ({ isMenuOpen, onMenuClick }: HeaderTemplateProps) => {
+const HeaderTemplate = (props: HeaderTemplateProps) => {
+  const { isMenuOpen, onMenuClick } = props;
+
   const t = useTranslations();
   const classes = useStyles();
 
@@ -105,7 +107,7 @@ const HeaderTemplate = ({ isMenuOpen, onMenuClick }: HeaderTemplateProps) => {
           </LinkShared>
           <Box display={{ xs: "none", md: "block" }}>
             <div className={classes.menuWrapper}>
-              {/* <NavigationGqlCtfComponentFeature /> */}
+              <NavigationGqlCtfComponentFeature />
             </div>
           </Box>
         </Container>
