@@ -11,12 +11,12 @@ export type CoverImageProps = {
 
 /**
  * Renders a cover image component.
- * @param title - The title of the image.
- * @param [url="#"] - The URL of the image.
- * @param slug - The slug of the image.
- * @returns The rendered cover image component.
+ * @param {CoverImageProps} props - The properties to render the component with.
+ * @returns The rendered image component.
  */
-const CoverImage = ({ title, url = "#", slug }: CoverImageProps) => {
+const CoverImage = (props: CoverImageProps) => {
+  const { title, url = "#", slug } = props;
+
   const image = (
     <ContentfulImage
       alt={title?.length > 0 ? `Cover Image for ${title}` : `Cover Image`}
