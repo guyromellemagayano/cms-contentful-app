@@ -254,7 +254,14 @@ export type FormSettingsFeatureProps = {
   onClose: () => void;
 };
 
-const FormSettingsFeature = ({ onClose }: FormSettingsFeatureProps) => {
+/**
+ * Represents the form for the settings feature.
+ * @param {FormSettingsFeatureProps} props - The properties to render the component with.
+ * @returns The rendered feature component.
+ */
+const FormSettingsFeature = (props: FormSettingsFeatureProps) => {
+  const { onClose } = props;
+
   const { previewActive } = useContentfulContext();
   const [newPreviewActive, setNewPreviewActive] = useState(
     previewActive || false
@@ -264,6 +271,7 @@ const FormSettingsFeature = ({ onClose }: FormSettingsFeatureProps) => {
   const pathname = usePathname();
   const classes = useStyles();
 
+  // Handles the form submission event.
   const onSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
 
