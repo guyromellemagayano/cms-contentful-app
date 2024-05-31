@@ -4,7 +4,9 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS } from "@contentful/rich-text-types";
 import Image from "next/image";
 
-export type Asset = {
+import type { WithAny } from "@/types/common";
+
+export type Asset = WithAny & {
   sys: {
     id: string;
   };
@@ -12,26 +14,25 @@ export type Asset = {
   description: string;
 };
 
-export type AssetLink = {
+export type AssetLink = WithAny & {
   block: Asset[];
 };
 
-export type Content = {
+export type Content = WithAny & {
   json: any;
   links: {
     assets: AssetLink;
   };
 };
 
-export type RichTextAssetProps = {
+export type RichTextAssetProps = WithAny & {
   id: string;
   assets: Asset[] | undefined;
 };
 
 /**
  * Renders a rich text asset based on the provided ID and assets.
- * @param id - The ID of the asset to render.
- * @param assets - The array of assets to search for the specified ID.
+ * @param {RichTextAssetProps} props - The properties to render the rich text asset with.
  * @returns The rendered rich text asset as an Image component, or null if the asset is not found or does not have a URL.
  */
 export const RichTextAsset = ({ id, assets }: RichTextAssetProps) => {
@@ -44,17 +45,19 @@ export const RichTextAsset = ({ id, assets }: RichTextAssetProps) => {
   return null;
 };
 
-export type MarkdownProps = {
+export type MarkdownProps = WithAny & {
   content: Content;
 };
 
 /**
  * Renders Markdown content as React components.
- * @param content - The Markdown content.
+ * @param {MarkdownProps} props - The properties to render the Markdown content with.
  * @returns The rendered React components.
  */
-const Markdown = ({ content }: MarkdownProps): ReactNode =>
-  documentToReactComponents(content.json, {
+const Markdown = (props: MarkdownProps): ReactNode => {
+  const { content } = props;
+
+  return documentToReactComponents(content.json, {
     renderNode: {
       [BLOCKS.EMBEDDED_ASSET]: (node: any) => (
         <RichTextAsset
@@ -64,6 +67,7 @@ const Markdown = ({ content }: MarkdownProps): ReactNode =>
       ),
     },
   });
+};
 
 Markdown.displayName = "Markdown";
 
