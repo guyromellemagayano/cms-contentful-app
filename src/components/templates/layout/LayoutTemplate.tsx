@@ -6,9 +6,8 @@ import { CssBaseline, Theme } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
 // import { useContentfulContext } from "@/hooks/contentful";
+import { HeaderTemplate } from "@/components/templates/header";
 import { WithChildren } from "@/types/common";
-
-import { HeaderTemplate } from "../header";
 
 const useStyles = makeStyles((theme: Theme) => ({
   content: {
@@ -24,10 +23,12 @@ export type LayoutTemplateProps = WithChildren;
 
 /**
  * Renders the layout template component.
- * @param children - The children components.
- * @returns The rendered component.
+ * @param {LayoutTemplateProps} props - The properties to render the component with.
+ * @returns The rendered template component.
  */
-const LayoutTemplate = ({ children }: LayoutTemplateProps) => {
+const LayoutTemplate = (props: LayoutTemplateProps) => {
+  const { children } = props;
+
   const [isMenuOpen, setMenuOpen] = useState<boolean>(false);
   const [isPending, startTransition] = useTransition();
   const classes = useStyles();
