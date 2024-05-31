@@ -5,6 +5,7 @@ import {
   getTranslations,
   unstable_setRequestLocale,
 } from "next-intl/server";
+import { Red_Hat_Display } from "next/font/google";
 
 // import { FooterLayout } from "@/components/layouts/footer";
 import { LayoutTemplate } from "@/components/templates/layout";
@@ -14,6 +15,12 @@ import { ParamsData } from "@/types/page";
 
 import { SettingsFeature } from "@/components/features/settings";
 import Providers from "./providers";
+
+const redHat = Red_Hat_Display({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+});
 
 /**
  * Generates static parameters for each locale.
@@ -59,16 +66,12 @@ const LocaleLayout = async <PD extends ParamsData>({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} className={redHat.className}>
       <head>
         <meta charSet="utf-8" />
         <meta name="robots" content="noindex, nofollow" />
         <meta name="theme-color" content="#000" />
 
-        <link
-          href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap"
-          rel="stylesheet"
-        />
         <link
           rel="apple-touch-icon"
           sizes="180x180"

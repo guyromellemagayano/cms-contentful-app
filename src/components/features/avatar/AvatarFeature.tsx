@@ -38,7 +38,7 @@ const AvatarFeature = (props: AvatarFeatureProps) => {
   const { asset, widthPx = 250, ...rest } = props;
 
   const classes = useStyles();
-  const url = useMemo(() => `${asset.url}?wwidthPx}`, [asset.url, widthPx]);
+  const url = useMemo(() => `${asset.url}?wwidthPx}`, [asset.url]);
 
   return url && url?.length > 0 ? (
     <div className={classes.avatarRoot} {...rest}>
