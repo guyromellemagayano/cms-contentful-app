@@ -31,6 +31,14 @@ const polyfills = (/** @type {{ entry: () => Promise<any>; }} */ config) => {
 
 /** @type {import('next').NextConfig} */
 const config = {
+  reactStrictMode: true,
+  transpilePackages: [
+    "@mui/material",
+    "@mui/material-nextjs",
+    "@mui/icons-material",
+    "@mui/styles",
+    "@mui/system",
+  ],
   env: {
     COIN_COLORFUL_EXAMPLE_PATH: process.env.COIN_COLORFUL_EXAMPLE_PATH,
     COIN_COLORFUL_CMS_NAME: process.env.COIN_COLORFUL_CMS_NAME,
@@ -87,9 +95,8 @@ const config = {
     path: "/_next/image",
   },
   webpack(config, options) {
-    const fileLoaderRule = config.module.rules.find(
-      (rule) =>
-        rule.test?.test?.(".svg")
+    const fileLoaderRule = config.module.rules.find((rule) =>
+      rule.test?.test?.(".svg")
     );
 
     config.module.rules.push(
