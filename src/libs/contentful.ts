@@ -16,14 +16,15 @@ export const ctfFetcher =
     options?: RequestInit["headers"]
   ) =>
   async (): Promise<TData> => {
-    const res = await fetch(CONTENTFUL_FETCH_CONFIG.endpoint, {
+    const res = await fetch(CONTENTFUL_FETCH_CONFIG.endpoint as string, {
       method: "POST",
-      body: JSON.stringify({ query }),
+      ...options,
       ...(variables?.preview
         ? CONTENTFUL_FETCH_CONFIG.previewParams
         : CONTENTFUL_FETCH_CONFIG.params),
-      ...options,
+      body: JSON.stringify({ query, variables }),
     });
+
     const json = await res.json();
 
     if (json.errors) {

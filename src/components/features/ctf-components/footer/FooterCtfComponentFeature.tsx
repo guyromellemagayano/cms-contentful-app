@@ -1,5 +1,3 @@
-"use client";
-
 import { useContentfulInspectorMode } from "@contentful/live-preview/react";
 import { Facebook, Instagram, LinkedIn, Twitter } from "@mui/icons-material";
 import { Container, Theme, Typography } from "@mui/material";
@@ -338,7 +336,7 @@ const FooterCtfComponentFeature = (props: FooterCtfComponentFeatureProps) => {
             </div>
             <section className={classes.copyrightAndLegal}>
               <p className={classes.copyright}>
-                {t("legal.copyright", { year: new Date().getFullYear() })}
+                {t("Legal.copyright", { year: new Date().getFullYear() })}
               </p>
 
               {footerContent?.legalLinks?.featuredPagesCollection?.items &&
@@ -355,18 +353,17 @@ const FooterCtfComponentFeature = (props: FooterCtfComponentFeatureProps) => {
                 )}
             </section>
           </div>
-
           <div className={classes.socialDisclaimer}>
             <div className={classes.socialWrapper}>
               <Typography className={classes.socialTitle}>
-                {t("socials.findUsOn")}
+                {t("Socials.findUsOn")}
               </Typography>
               <div className={classes.social}>
                 {footerContent?.twitterLink &&
                   footerContent?.twitterLink?.length > 0 && (
                     <a
                       href={footerContent.twitterLink}
-                      title={t("socials.twitter")}
+                      title={t("Socials.twitter")}
                       target="_blank"
                       rel="nofollow noreferrer"
                     >
@@ -378,7 +375,7 @@ const FooterCtfComponentFeature = (props: FooterCtfComponentFeatureProps) => {
                   footerContent?.facebookLink?.length > 0 && (
                     <a
                       href={footerContent.facebookLink}
-                      title={t("socials.facebook")}
+                      title={t("Socials.facebook")}
                       target="_blank"
                       rel="nofollow noreferrer"
                     >
@@ -390,7 +387,7 @@ const FooterCtfComponentFeature = (props: FooterCtfComponentFeatureProps) => {
                   footerContent?.linkedinLink?.length > 0 && (
                     <a
                       href={footerContent.linkedinLink}
-                      title={t("socials.linkedin")}
+                      title={t("Socials.linkedin")}
                       target="_blank"
                       rel="nofollow noreferrer"
                     >
@@ -402,7 +399,7 @@ const FooterCtfComponentFeature = (props: FooterCtfComponentFeatureProps) => {
                   footerContent?.instagramLink?.length > 0 && (
                     <a
                       href={footerContent.instagramLink}
-                      title={t("socials.instagram")}
+                      title={t("Socials.instagram")}
                       target="_blank"
                       rel="nofollow noreferrer"
                     >

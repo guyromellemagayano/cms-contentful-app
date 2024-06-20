@@ -22,7 +22,7 @@ export const contentfulContextValues = {
     main: CONTENTFUL_CONFIG.contentful.space_id,
   },
   previewActive: false,
-} as ContentfulContextValueProps;
+} satisfies ContentfulContextValueProps;
 
 export const ContentfulContext = createContext<ContentfulContextValueProps>(
   contentfulContextValues
@@ -47,7 +47,9 @@ const ContentfulContentProvider = ({
     <ContentfulContext.Provider
       value={{
         locale: localeCheck,
-        spaceIds: contentfulContextValues.spaceIds,
+        spaceIds: {
+          main: CONTENTFUL_CONFIG.contentful.space_id,
+        },
         previewActive,
       }}
     >

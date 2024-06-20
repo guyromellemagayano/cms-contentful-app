@@ -5,9 +5,10 @@ import { useEffect, useState, useTransition } from "react";
 import { CssBaseline, Theme } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
-// import { useContentfulContext } from "@/hooks/contentful";
+import { FooterGqlCtfComponentFeature } from "@/components/features/ctf-components/footer";
+import { MobileMenuGqlCtfComponentFeature } from "@/components/features/ctf-components/mobile-menu";
 import { HeaderTemplate } from "@/components/templates/header";
-import { WithChildren } from "@/types/common";
+import type { WithAny, WithChildren } from "@/types/common";
 
 const useStyles = makeStyles((theme: Theme) => ({
   content: {
@@ -19,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-export type LayoutTemplateProps = WithChildren;
+export type LayoutTemplateProps = WithAny & WithChildren;
 
 /**
  * Renders the layout template component.
@@ -32,7 +33,6 @@ const LayoutTemplate = (props: LayoutTemplateProps) => {
   const [isMenuOpen, setMenuOpen] = useState<boolean>(false);
   const [isPending, startTransition] = useTransition();
   const classes = useStyles();
-  // const { previewActive } = useContentfulContext();
 
   useEffect(() => {
     startTransition(() => {
@@ -48,7 +48,7 @@ const LayoutTemplate = (props: LayoutTemplateProps) => {
         document.activeElement.blur();
       }
     }
-  }, [isPending]);
+  }, []);
 
   return (
     <>
@@ -58,6 +58,13 @@ const LayoutTemplate = (props: LayoutTemplateProps) => {
         onMenuClick={() => setMenuOpen(true)}
       />
       <div className={classes.content}>{children}</div>
+      <FooterGqlCtfComponentFeature />
+      <MobileMenuGqlCtfComponentFeature
+        isOpen={isMenuOpen}
+        onOpenChange={(newOpen: boolean) => {
+          setMenuOpen(newOpen);
+        }}
+      />
     </>
   );
 };

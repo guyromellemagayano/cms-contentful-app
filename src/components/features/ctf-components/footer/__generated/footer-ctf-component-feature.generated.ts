@@ -99,7 +99,7 @@ export const useCtfFooterQuery = <TData = CtfFooterQuery, TError = unknown>(
   options?: UseQueryOptions<CtfFooterQuery, TError, TData>
 ) => {
   return useQuery<CtfFooterQuery, TError, TData>({
-    queryKey: ["CtfFooter", variables],
+    queryKey: !variables ? ["CtfFooter"] : ["CtfFooter", variables],
     queryFn: ctfFetcher<CtfFooterQuery, CtfFooterQueryVariables>(
       CtfFooterDocument,
       variables

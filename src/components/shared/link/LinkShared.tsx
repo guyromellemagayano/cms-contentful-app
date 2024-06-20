@@ -181,18 +181,17 @@ const LinkShared = (props: LinkSharedProps) => {
   }
 
   return (
-    <Link href={href} as={as} passHref {...rest}>
-      <MuiLink
-        href={as}
-        className={className}
-        underline={underlineStyle}
-        color={color}
-        onClick={() => onClick && onClick()}
-        title={title}
-      >
-        {children}
-      </MuiLink>
-    </Link>
+    <MuiLink
+      href={href}
+      className={className}
+      underline={underlineStyle}
+      color={color}
+      onClick={() => onClick && onClick()}
+      title={title}
+      {...rest}
+    >
+      {children}
+    </MuiLink>
   );
 };
 

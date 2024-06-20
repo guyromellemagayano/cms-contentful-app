@@ -79,8 +79,8 @@ export const useCtfNavigationQuery = <
 >(
   variables?: CtfNavigationQueryVariables,
   options?: UseQueryOptions<CtfNavigationQuery, TError, TData>
-) => {
-  return useQuery<CtfNavigationQuery, TError, TData>({
+) =>
+  useQuery<CtfNavigationQuery, TError, TData>({
     queryKey: !variables ? ["CtfNavigation"] : ["CtfNavigation", variables],
     queryFn: ctfFetcher<CtfNavigationQuery, CtfNavigationQueryVariables>(
       CtfNavigationDocument,
@@ -88,10 +88,9 @@ export const useCtfNavigationQuery = <
     ),
     ...options,
   });
-};
 
 useCtfNavigationQuery.getKey = (variables?: CtfNavigationQueryVariables) =>
-  variables === undefined ? ["CtfNavigation"] : ["CtfNavigation", variables];
+  !variables ? ["CtfNavigation"] : ["CtfNavigation", variables];
 useCtfNavigationQuery.fetcher = (
   variables?: CtfNavigationQueryVariables,
   options?: RequestInit["headers"]

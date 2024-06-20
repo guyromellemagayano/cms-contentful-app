@@ -1,3 +1,5 @@
+"use client";
+
 import { useContentfulInspectorMode } from "@contentful/live-preview/react";
 import { Theme } from "@mui/material";
 import { makeStyles } from "@mui/styles";

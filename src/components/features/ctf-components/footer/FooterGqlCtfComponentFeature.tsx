@@ -18,8 +18,6 @@ export type FooterGqlCtfComponentFeatureProps = WithAny;
 const FooterGqlCtfComponentFeature = (
   props: FooterGqlCtfComponentFeatureProps
 ) => {
-  const { ...rest } = props;
-
   const { locale, previewActive } = useContentfulContext();
   const { data, isLoading } = useCtfFooterQuery({
     locale,
@@ -34,7 +32,7 @@ const FooterGqlCtfComponentFeature = (
 
   if (!footerMenuCollection || isLoading) return null;
 
-  return <FooterCtfComponentFeature {...footerMenuCollection} {...rest} />;
+  return <FooterCtfComponentFeature {...footerMenuCollection} {...props} />;
 };
 
 FooterGqlCtfComponentFeature.displayName = "FooterGqlCtfComponentFeature";

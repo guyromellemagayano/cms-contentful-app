@@ -7,13 +7,12 @@ import {
 } from "next-intl/server";
 import { Red_Hat_Display } from "next/font/google";
 
-// import { FooterLayout } from "@/components/layouts/footer";
 import { LayoutTemplate } from "@/components/templates/layout";
 import { locales } from "@/configs/next-intl";
 import type { WithChildren } from "@/types/common";
 import { ParamsData } from "@/types/page";
 
-import { SettingsFeature } from "@/components/features/settings";
+// import { SettingsFeature } from "@/components/features/settings";
 import Providers from "./providers";
 
 const redHat = Red_Hat_Display({
@@ -30,7 +29,7 @@ const redHat = Red_Hat_Display({
 export const generateStaticParams = (): { locale: string }[] =>
   locales.map((locale) => ({ locale }));
 
-export type LocaleLayoutProps<PD extends ParamsData> = WithChildren & {
+export type RootLayoutProps<PD extends ParamsData> = WithChildren & {
   params: PD;
 };
 
@@ -39,10 +38,10 @@ export const generateMetadata = async ({
 }: {
   params: Pick<ParamsData, "locale">;
 }): Promise<Metadata> => {
-  const localeCheck = locale && locale?.length > 0 ? locale : "en";
+  const localeCheck = locale && locale?.length > 0 ? locale : "en-US";
   const t = await getTranslations({
     locale: localeCheck,
-    namespace: "LocaleLayout",
+    namespace: "RootLayout",
   });
 
   return {
@@ -53,13 +52,13 @@ export const generateMetadata = async ({
 /**
  * Render the root layout for the application.
  * @param children - The children to render in the layout.
- * @returns The rendered LocaleLayout component.
+ * @returns The rendered RootLayout component.
  */
-const LocaleLayout = async <PD extends ParamsData>({
+const RootLayout = async <PD extends ParamsData>({
   children,
   params: { locale },
-}: LocaleLayoutProps<PD>) => {
-  const localeCheck = locale && locale?.length > 0 ? locale : "en";
+}: RootLayoutProps<PD>) => {
+  const localeCheck = locale && locale?.length > 0 ? locale : "en-US";
 
   unstable_setRequestLocale(localeCheck);
 
@@ -93,10 +92,10 @@ const LocaleLayout = async <PD extends ParamsData>({
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>
-          <Providers>
+          <Providers locale={locale}>
             <LayoutTemplate>
               {children}
-              <SettingsFeature />
+              {/* <SettingsFeature /> */}
             </LayoutTemplate>
           </Providers>
         </NextIntlClientProvider>
@@ -105,6 +104,6 @@ const LocaleLayout = async <PD extends ParamsData>({
   );
 };
 
-LocaleLayout.displayName = "LocaleLayout";
+RootLayout.displayName = "RootLayout";
 
-export default LocaleLayout;
+export default RootLayout;

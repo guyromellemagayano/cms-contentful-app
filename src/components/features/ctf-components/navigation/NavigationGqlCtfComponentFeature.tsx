@@ -1,3 +1,5 @@
+"use client";
+
 import { useContentfulLiveUpdates } from "@contentful/live-preview/react";
 
 import { useContentfulContext } from "@/hooks/contentful";
@@ -23,6 +25,7 @@ const NavigationGqlCtfComponentFeature = (
     locale,
     preview: previewActive,
   });
+
   const navigationMenuCollection = useContentfulLiveUpdates(
     data?.navigationMenuCollection &&
       Object.keys(data?.navigationMenuCollection)?.length > 0

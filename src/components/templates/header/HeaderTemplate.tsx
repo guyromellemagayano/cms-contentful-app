@@ -102,7 +102,7 @@ const HeaderTemplate = (props: HeaderTemplateProps) => {
             maxWidth: `${THEME_CONTAINER_WIDTH / 10}rem`,
           }}
         >
-          <LinkShared href="/" withoutMaterial title={t("common.homepage")}>
+          <LinkShared href="/" withoutMaterial title={t("Common.homepage")}>
             <ColorfulCoinLogo className={classes.corporateLogo} />
           </LinkShared>
           <Box display={{ xs: "none", md: "block" }}>
@@ -113,7 +113,7 @@ const HeaderTemplate = (props: HeaderTemplateProps) => {
         </Container>
         <Box display={{ md: "none" }}>
           <IconButton
-            title={t("navigation.mobileMenuButton")}
+            title={t("Navigation.mobileMenuButton")}
             onClick={() => onMenuClick?.()}
             aria-controls="mobile-menu"
             aria-expanded={isMenuOpen}
