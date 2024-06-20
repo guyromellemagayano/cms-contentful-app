@@ -1,4 +1,4 @@
-import { Pathnames } from "next-intl/navigation";
+import { Pathnames } from "next-intl/routing";
 
 import { COIN_COLORFUL_SITE_URL } from "./env";
 
@@ -9,7 +9,6 @@ export const host =
     : `http://localhost:${port}`;
 export const defaultLocale = "en" as const;
 export const locales = ["en", "de"] as const;
-export const localePrefix = undefined;
 
 export const pathnames = {
   "/": "/",
@@ -18,5 +17,7 @@ export const pathnames = {
     de: "/pfadnamen",
   },
 } satisfies Pathnames<typeof locales>;
+
+export const localePrefix = undefined;
 
 export type AppPathnames = keyof typeof pathnames;
