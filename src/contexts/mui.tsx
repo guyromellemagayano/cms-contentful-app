@@ -1,16 +1,14 @@
-"use client";
-
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
 
 import { colorfulTheme } from "@/theme";
-import { WithChildren } from "@/types/common";
+import type { WithAny, WithChildren } from "@/types/common";
 
 const appRouterCacheProviderSettings = {
   enableCssLayer: true,
 };
 
-export type MuiProviderProps = WithChildren;
+export type MuiProviderProps = WithAny & WithChildren;
 
 /**
  * Provides the application with the MUI theme and router cache provider.
