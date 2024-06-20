@@ -5,7 +5,8 @@ import { createContext } from "react";
 import { useSearchParams } from "next/navigation";
 
 import { CONTENTFUL_CONFIG } from "@/configs/contentful";
-import { WithChildren } from "@/types/common";
+import { defaultLocale } from "@/configs/next-intl";
+import type { ParamsData } from "@/types/page";
 
 export type ContentfulContextValueProps = {
   locale: string;
@@ -16,7 +17,7 @@ export type ContentfulContextValueProps = {
 };
 
 export const contentfulContextValues = {
-  locale: "en",
+  locale: defaultLocale,
   spaceIds: {
     main: CONTENTFUL_CONFIG.contentful.space_id,
   },
@@ -27,7 +28,7 @@ export const ContentfulContext = createContext<ContentfulContextValueProps>(
   contentfulContextValues
 );
 
-export type ContentfulContentProviderProps = WithChildren;
+export type ContentfulContentProviderProps = ParamsData;
 
 /**
  * Provides the Contentful content to the application.
@@ -35,15 +36,17 @@ export type ContentfulContentProviderProps = WithChildren;
  * @returns The rendered `ContentfulContentProvider` component.
  */
 const ContentfulContentProvider = ({
+  locale,
   children,
 }: ContentfulContentProviderProps) => {
-  const searchParams = useSearchParams()
+  const localeCheck = locale && locale?.length > 0 ? locale : defaultLocale;
+  const searchParams = useSearchParams();
   const previewActive = !!searchParams.get("preview");
 
   return (
     <ContentfulContext.Provider
       value={{
-        locale: "en",
+        locale: localeCheck,
         spaceIds: contentfulContextValues.spaceIds,
         previewActive,
       }}
