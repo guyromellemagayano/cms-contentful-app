@@ -1,5 +1,8 @@
+"use client";
+
 import { createTheme } from "@mui/material/styles";
 import { TypographyStyleOptions } from "@mui/material/styles/createTypography";
+import { Red_Hat_Display } from "next/font/google";
 
 export const THEME_CONTAINER_WIDTH: number = 1260;
 export const THEME_SPACER: number = 5;
@@ -78,13 +81,19 @@ export const getColorConfigFromPalette: GetColorConfigFromPalette = (
   return colorConfigs[`palette-${palette}`];
 };
 
+const redHat = Red_Hat_Display({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+});
+
 /**
  * The theme configuration.
  */
 export const colorfulTheme = createTheme({
   spacing: THEME_SPACER,
   typography: {
-    fontFamily: `'Red Hat Display', sans-serif`,
+    fontFamily: `${redHat.style.fontFamily}, sans-serif`,
     htmlFontSize: 10,
     caption: {
       fontSize: "1.5rem",
