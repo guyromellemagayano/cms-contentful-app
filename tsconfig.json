@@ -15,7 +15,6 @@
     "jsx": "preserve",
     "incremental": true,
     "rootDir": ".",
-    "types": ["./src/app/types/*.ts"],
     "plugins": [
       {
         "name": "next"
